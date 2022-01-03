@@ -23,17 +23,16 @@ const StationTimes = ({ abbr }: typeof Station): JSX.Element | null => {
     return (
       <div>
         {realTimeDepartures.flatMap((departure) => {
-          console.log(departure)
-
           return (
             <div className="flex ">
               <div className="w-44">{departure['destination']} </div>
               <div className="flex">
-                <p>Minutes: </p>
+                <p>Min: </p>
+
                 {departure['estimate'].map((time) => (
                   <div key={time['id']} className="px-1 ">
                     {' '}
-                    {time.minutes}{' '}
+                    {time.minutes},
                   </div>
                 ))}
               </div>
