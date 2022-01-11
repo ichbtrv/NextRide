@@ -14,8 +14,6 @@ const StationTimes = ({ abbr }: typeof Station): JSX.Element | null => {
       urlExtention,
     })
 
-  console.log(stateAtom)
-
   if (
     typeof realTimeDepartures === 'object' &&
     typeof realTimeDepartures !== 'undefined'
