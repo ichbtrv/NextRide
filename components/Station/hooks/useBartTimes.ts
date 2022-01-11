@@ -1,7 +1,7 @@
 import axios from 'axios'
-import React from 'react'
+
 import { useQuery } from 'react-query'
-import { Bart, Times, UseBartProps } from 'interfaces'
+import { Times, UseBartProps } from 'interfaces'
 import { abbrAtom } from 'store/atoms'
 import { useAtom } from 'jotai'
 
