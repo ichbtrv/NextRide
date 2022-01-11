@@ -8,7 +8,7 @@ export const useBartStation = ({ urlExtention }: UseBartProps): string | [] => {
     'bartData',
     () =>
       axios(`https://api.bart.gov/api/${urlExtention}`).then((res) => res.data),
-    { refetchInterval: 40 * 1000 }
+    { cacheTime: Infinity, refetchOnMount: false }
   )
 
   if (isLoading) return 'loading..'
