@@ -1,5 +1,5 @@
 export interface UseBartProps {
-  urlExtention: string
+  urlExtension: string
 }
 
 export interface Station {

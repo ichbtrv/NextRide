@@ -7,11 +7,11 @@ import Station from './Station'
 
 const StationTimes = ({ abbr }: typeof Station): JSX.Element | null => {
   const [stateAtom, setStateAtom] = useAtom(abbrAtom)
-  const urlExtention = `etd.aspx?cmd=etd&key=MW9S-E7SL-26DU-VV8V&json=y&orig=${stateAtom}`
+  const urlExtension = `etd.aspx?cmd=etd&key=MW9S-E7SL-26DU-VV8V&json=y&orig=${stateAtom}`
 
   const realTimeDepartures: string | undefined | string[] | DepartureInterface =
     useBartTimes({
-      urlExtention,
+      urlExtension,
     })
 
   if (
