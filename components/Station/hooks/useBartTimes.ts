@@ -6,7 +6,7 @@ import { abbrAtom } from 'store/atoms'
 import { useAtom } from 'jotai'
 
 export const useBartTimes = ({ urlExtension }: UseBartProps): string | [] => {
-  const [stateAtom, setStateAtom] = useAtom(abbrAtom)
+  const [stateAtom, _setStateAtom] = useAtom(abbrAtom)
   const { isLoading, error, data } = useQuery<Times<[]>, Error>(
     //clicked station as Query Key
     stateAtom,

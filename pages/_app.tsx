@@ -14,6 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Meta />
         <Component {...pageProps} />
       </Layout>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   )
 }

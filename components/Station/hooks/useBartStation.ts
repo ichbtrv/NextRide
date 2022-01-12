@@ -1,13 +1,14 @@
 import axios from 'axios'
 import { useQuery } from 'react-query'
-import { Bart, UseBartProps, Times } from 'interfaces'
+import { Bart, UseBartProps } from 'interfaces'
 
 export const useBartStation = ({ urlExtension }: UseBartProps): string | [] => {
-  const { isLoading, error, data, isSuccess } = useQuery<Bart<[]>, Error>(
+  const { isLoading, error, data } = useQuery<Bart<[]>, Error>(
     'bartData',
     () =>
       axios(`https://api.bart.gov/api/${urlExtension}`).then((res) => res.data),
-    { cacheTime: Infinity, refetchOnMount: false }
+    { cacheTime: Infinity, refetchOnMount: false, refetchOnWindowFocus: false }
+    //refetchOnMount prevents refetching in case of remount
   )
 
   if (isLoading) return 'loading..'
