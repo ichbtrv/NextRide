@@ -13,8 +13,9 @@ const Layout = ({ children, title = 'NextRide' }: Props) => (
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-
-    {children}
+    <div className="flex items-center min-h-screen justify-center p-2">
+      {children}
+    </div>
   </div>
 )
 
