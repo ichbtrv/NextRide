@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import { AppProps } from 'next/app'
 import '../styles/globals.css'
 import Layout from 'components/layout/Layout'
-import { ReactQueryDevtools } from 'react-query/devtools'
+
 import Meta from 'components/meta'
 
 const queryClient = new QueryClient()
@@ -14,7 +14,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Meta />
         <Component {...pageProps} />
       </Layout>
-      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   )
 }
