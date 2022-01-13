@@ -40,8 +40,10 @@ const StationTimes = ({ abbr }: typeof Station): JSX.Element | null => {
       </div>
     )
   } else if (typeof realTimeDepartures === 'string') {
-    //Loading state Removed 'Loading' text  for less awkward ui
-    //Loading often appears for half a second or so before displaying the list
+    // Loading state Removed 'Loading' text  for less awkward ui
+    // Loading often appears for half a second or so before displaying the list
+    // TO DO - implement a timer that displays loading if the times take more than say
+    // 500ms to load
     return <></>
   } else {
     return <div>No Train Data Available</div>
