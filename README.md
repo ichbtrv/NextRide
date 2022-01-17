@@ -4,7 +4,7 @@ An app with minimal ui to just display the real time departures for each station
 
 ## Screenshot
 
-<img src='https://i.imgur.com/778xDH5.png' alt='screenshot of project' />
+<img src='https://i.imgur.com/778xDH5.png' width='250' alt='screenshot of project' />
 
 
 # Tech
