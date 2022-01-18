@@ -14,7 +14,8 @@ I wont go into too much detail about Next, TypeScript and Tailwind, but I will m
 React Query is awesome. I don't fully understand all of the ins and outs just yet, but I can definitely appreciate its simultaneous granularity and ease of use. The Bart API consists of several Rest endpoints, so to get data about any given aspect of Bart required two separate requests. I had to one, get the list of stations to display, and then two with the station abbreviation I had to fetch each corresponding real time departure but from two separate endpoints. With react-query this was relatively straightforward; I fetched the list and then mapped over the results passing down the abbreviation from each station into a station component.
 
 
-``{typeof stationList === 'object'
+```js
+{typeof stationList === 'object'
           ? stationList.map((obj) => {
               return (
                 <>
@@ -26,7 +27,8 @@ React Query is awesome. I don't fully understand all of the ins and outs just ye
                 </>
               )
             })
-          : 'Loading...'}``
+          : 'Loading...'}
+ ```
          
 
 <br/>
@@ -36,7 +38,8 @@ React Query is awesome. I don't fully understand all of the ins and outs just ye
 Within the Station component I set the abbreviation state based on the Station component that is clicked. Also within the Station component is a StationTimes component that is hidden unless the stations abbreviation matches the abbreviation state, which is initialized to an empty string (initially rendering them all closed). This allows me to keep one station open at a time because whenever you click on a different station, the abbreviation state changes and re-renders the individual components, reevaluating the conditional. 
 
 
-``` const Station = ({ abbr, name }: typeof Station) => {
+```js 
+const Station = ({ abbr, name }: typeof Station) => {
   const [abbrState, setAbbrState] = useAtom(abbrAtom)
   return (
     <div
@@ -56,6 +59,7 @@ Within the Station component I set the abbreviation state based on the Station c
   )
 }
 
+
 export default Station
 ```
 <br/>
@@ -66,5 +70,5 @@ Initially when you first open a station it makes a request for the times based o
 Also I was able to utilize the granularity of React Query to only request the station list once (although to be honest after monitoring it, sometimes it does request it twice at an interval, but I haven't seen any more than that) and to only make requests for the Stations which were clicked on at a 30 second interval, a trade off accounting for if the user clicked on the station one second after the real time departure changed. 
 
 ## The main issue
-Honestly I really like this architecture. I was happy with what I was able to achieve, especially given the amount of thought I put into it. There is at least one glaring error though, at least one particular one that has been bothering me. Because the StationTimes component is nested in the Station component initially 50 of them are rendered, albeit all with empty strings. To curb this inefficiency, I set the "retry" option to false, so React Query only makes one unnecessary request for a station with the abbreviation of ''. If there are any other logic issues I missed please reach out, I am always looking to improve. 
+I know there are a million different ways of doing things, and I'm not claiming that this is objectively a great method but, honestly I really like this architecture. I was happy with what I was able to achieve, especially given the amount of thought I put into it. There is at least one glaring error though, at least one particular one that has been bothering me. Because the StationTimes component is nested in the Station component initially 50 of them are rendered, albeit all with empty strings. To curb this inefficiency, I set the "retry" option to false, so React Query only makes one unnecessary request for a station with the abbreviation of ''. If there are any other logic issues I missed please reach out, I am always looking to improve. 
 
